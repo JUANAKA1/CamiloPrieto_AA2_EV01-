@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Listado de zapatos</title>
+  <link rel="stylesheet" href="../static/styles.css">
+</head>
+<body>
+<div class="container">
+<h1>Listado de zapatos</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Marca</th>
+    <th>Precio</th>
+    <th>Acciones</th>
+  </tr>
+  <tr th:each="zapato : ${listaZapatos}">
+    <td th:text="${zapato.id}"></td>
+    <td th:text="${zapato.nombre}"></td>
+    <td th:text="${zapato.marca}"></td>
+    <td th:text="${zapato.precio}"></td>
+    <td>
+      <a th:href="@{/zapatos/editar/{id}(id=${zapato.id})}">Editar</a>
+      <a th:href="@{/zapatos/eliminar/{id}(id=${zapato.id})}">Eliminar</a>
+    </td>
+  </tr>
+</table>
+<a href="/zapatos/nuevo"> Nuevo zapato</a>
+</div>
+</body>
+</html>
+<--http://localhost:8080/zapatos-->
